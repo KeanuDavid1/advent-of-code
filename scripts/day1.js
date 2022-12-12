@@ -9,26 +9,43 @@ const findHighestTotal = (content) => {
             highestTotal = result;
         }
     }
-    console.log('Highest total is', highestTotal)
-}
+    console.log('Highest total is', highestTotal);
+};
 
-const loadTextFile = (functionToExecuteWithData) => {
+const playRockPaperScissors = (content) => {
+    console.log(content);
+};
+
+const selectDayFunction = (file) => {
+    const day = file.name.split('.')[0].replace('day', '');
+    switch (day) {
+        case '1':
+            return findHighestTotal;
+        case '2':
+            return playRockPaperScissors;
+        default:
+            return function() { console.error('No matching function was found for the selected file.') };
+    };
+};
+
+const loadTextFile = () => {
     console.log("Reading file...")
     const [file] = document.getElementById('file-data').files;
     const reader = new FileReader();
     reader.addEventListener('load', (event) => {
         console.log('Finished loading!');
-        functionToExecuteWithData(event.target.result);
+        // selectDayFunction() returns a function.
+        selectDayFunction(file)(event.target.result);
     });
     reader.readAsText(file);
-}
+};
 
 const addListenerToInput = () => {
-    document.getElementById('file-data').addEventListener('change', () => loadTextFile(findHighestTotal));
+    document.getElementById('file-data').addEventListener('change', loadTextFile);
 };
 
 const init = () => {
     addListenerToInput();
-}
+};
 
 init();
