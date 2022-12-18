@@ -15,7 +15,7 @@ const findDuplicateInSack = (sack) => {
 
 const alphabet = '.abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
 
-const sortRucksacks = (content) => {
+const analyseRuckSacks = (content) => {
     const duplicateItems = [];
     let totalTypeScore = 0;
 

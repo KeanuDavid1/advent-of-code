@@ -6,7 +6,7 @@ const selectDayFunction = (file) => {
         case '2':
             return playRockPaperScissors;
         case '3':
-            return sortRucksacks;
+            return analyseRuckSacks;
         case '4':
         case '5':
         case '6':
